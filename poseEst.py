@@ -125,22 +125,10 @@ while cap.isOpened():
             y = angles[1] * 360
             z = angles[2] * 360
             
-            # #for webcam: where the head is tilted
-            # if y<-10:
-            #     text = "Looking left"
-            # elif y>10:
-            #     text = "Looking right"
-            # elif x<-10:
-            #     text = "Looking down"
-            # elif x>10:
-            #     text = "Looking up"
-            # else:
-            #     text = "Forward"
-
-            #for provided video: where the head is tilted
-            if y>0:
+            #for webcam: where the head is tilted
+            if y<-10:
                 text = "Looking left"
-            elif y<-8:
+            elif y>10:
                 text = "Looking right"
             elif x<-10:
                 text = "Looking down"
@@ -148,6 +136,18 @@ while cap.isOpened():
                 text = "Looking up"
             else:
                 text = "Forward"
+
+#             #for provided video: where the head is tilted
+#             if y>0:
+#                 text = "Looking left"
+#             elif y<-8:
+#                 text = "Looking right"
+#             elif x<-10:
+#                 text = "Looking down"
+#             elif x>10:
+#                 text = "Looking up"
+#             else:
+#                 text = "Forward"
             
             #to display the nose direction (where the face would be seeing)
             nose_3d_projection, jacobian = cv2.projectPoints(nose_3d, rot_vec, trans_vec, cam_matrix, dist_matrix)
